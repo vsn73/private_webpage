@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone Code from GitHub') {
             steps {
-                git branch: 'main', url: 'https://<your-token>@github.com/<username>/<repo>.git'
+                git branch: 'main', url: 'https://github.com/vsn73/private_webpage.git'
             }
         }
 
