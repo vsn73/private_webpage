@@ -5,7 +5,7 @@ FROM httpd:2.4
 RUN rm -rf /usr/local/apache2/htdocs/*
 
 # Copy your HTML file into the Apache server's root directory
-COPY cafe.html /usr/local/apache2/htdocs/
+COPY index.html /usr/local/apache2/htdocs/
 
 # Set working directory (optional)
 WORKDIR /usr/local/apache2/htdocs/
