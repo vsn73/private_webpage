@@ -4,12 +4,38 @@ pipeline {
     environment {
         DOCKER_IMAGE = "my-apache-site"
         CONTAINER_NAME = "apache-html"
+        SONARQUBE_ENV = "SonarQube"  // Name from Jenkins SonarQube configuration
     }
 
     stages {
+
         stage('Clone Code from GitHub') {
             steps {
                 git branch: 'main', url: 'https://github.com/vsn73/private_webpage.git'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv(SONARQUBE_ENV) {
+                    sh """
+                        sonar-scanner \
+                        -Dsonar.projectKey=private_webpage \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=http://74.225.146.90:9000 \
+                        -Dsonar.login=sonarqube-tokensec
+                    """
+                }
+            }
+        }
+
+        stage('Quality Gate Check') {
+            steps {
+                script {
+                    timeout(time: 2, unit: 'MINUTES') {
+                        waitForQualityGate abortPipeline: true
+                    }
+                }
             }
         }
 
