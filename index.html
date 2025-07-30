@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brew Haven -Artisan Cafe</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #6F4E37;
+            --secondary: #E6D5B8;
+            --accent: #C4A484;
+            --light: #F9F5F0;
+            --dark: #3E2723;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .navbar {
+            background-color: rgba(249, 245, 240, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(111, 78, 55, 0.9) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar.scrolled .nav-link {
+            color: var(--light) !important;
+        }
+        
+        .navbar.scrolled .navbar-brand {
+            color: var(--light) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark);
+            border-color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .about-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .menu-section {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .menu-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .menu-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .menu-card:hover .menu-img img {
+            transform: scale(1.1);
+        }
+        
+        .menu-content {
+            padding: 20px;
+        }
+        
+        .menu-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .price {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .testimonials-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(111, 78, 55, 0.9), rgba(111, 78, 55, 0.9)), url('https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 15px;
+            transition: all 0.3s;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        .contact-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .contact-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .floating-coffee {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/924/924514.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            animation: float 10s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+        
+        .coffee-bean {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/3132/3132693.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            animation: fall 15s linear infinite;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Parallax effect for hero section */
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 1;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fs-3 fw-bold" href="#" style="color: var(--primary);">Brew Haven</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" style="color: var(--primary);">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" style="color: var(--primary);">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu" style="color: var(--primary);">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials" style="color: var(--primary);">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" style="color: var(--primary);">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="parallax-bg"></div>
+        <div class="container hero-content text-center animate__animated animate__fadeIn">
+            <h1 class="hero-title">Brew Haven</h1>
+            <p class="hero-subtitle">Artisan Coffee & Homemade Delights</p>
+            <a href="#menu" class="btn btn-primary btn-lg pulse">Explore Our Menu</a>
+        </div>
+        
+        <!-- Floating coffee cup animations -->
+        <div class="floating-coffee" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="floating-coffee" style="top: 70%; left: 15%; animation-delay: 2s;"></div>
+        <div class="floating-coffee" style="top: 40%; left: 80%; animation-delay: 4s;"></div>
+        <div class="floating-coffee" style="top: 80%; left: 85%; animation-delay: 6s;"></div>
+        
+        <!-- Falling coffee beans -->
+        <div class="coffee-bean" style="left: 10%; animation-delay: 1s;"></div>
+        <div class="coffee-bean" style="left: 20%; animation-delay: 3s;"></div>
+        <div class="coffee-bean" style="left: 50%; animation-delay: 5s;"></div>
+        <div class="coffee-bean" style="left: 70%; animation-delay: 7s;"></div>
+        <div class="coffee-bean" style="left: 90%; animation-delay: 9s;"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0 animate__animated" data-animate="animate__fadeInLeft">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cafe Interior" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6 animate__animated" data-animate="animate__fadeInRight">
+                    <h2 class="section-title text-center">Our Story</h2>
+                    <p>Founded in 2010, Brew Haven began as a small coffee cart with a big dream - to bring exceptional coffee and warm hospitality to our community. Today, we're proud to be a beloved neighborhood cafe where every cup tells a story.</p>
+                    <p>We source our beans directly from sustainable farms around the world and roast them in-house to bring out their unique flavors. Our pastries and sandwiches are made fresh daily using locally-sourced ingredients.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="fas fa-coffee fa-2x" style="color: var(--primary);"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Artisan Coffee</h5>
+                                    <p class="mb-0">Small-batch roasted</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="fas fa-bread-slice fa-2x" style="color: var(--primary);"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Fresh Bakery</h5>
+                                    <p class="mb-0">Made daily</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="fas fa-leaf fa-2x" style="color: var(--primary);"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Sustainable</h5>
+                                    <p class="mb-0">Eco-friendly practices</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="fas fa-heart fa-2x" style="color: var(--primary);"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Community</h5>
+                                    <p class="mb-0">Local gathering place</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Menu</h2>
+                <p class="lead">Seasonal selections crafted with care</p>
+            </div>
+            
+            <ul class="nav nav-tabs justify-content-center mb-4" id="menuTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="coffee-tab" data-bs-toggle="tab" data-bs-target="#coffee" type="button" role="tab">Coffee</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="food-tab" data-bs-toggle="tab" data-bs-target="#food" type="button" role="tab">Food</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="desserts-tab" data-bs-toggle="tab" data-bs-target="#desserts" type="button" role="tab">Desserts</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="menuTabsContent">
+                <div class="tab-pane fade show active" id="coffee" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-4 animate__animated" data-animate="animate__fadeInUp">
+                            <div class="menu-card">
+                                <div class="menu-img">
+                                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Espresso">
+                                </div>
+                                <div class="menu-content">
+                                    <h4 class="menu-title">Espresso</h4>
+                                    <p>Our signature rich and creamy espresso shot</p>
+                                    <span class="price">$3.50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 animate__animated" data-animate="animate__fadeInUp" data-delay="100">
+                            <div class="menu-card">
+                                <div class="menu-img">
+                                    <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cappuccino">
+                                </div>
+                                <div class="menu-content">
+                                    <h4 class="menu-title">Cappuccino</h4>
+                                    <p>Perfectly balanced espresso, steamed milk and foam</p>
+                                    <span class="price">$4.50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 animate__animated" data-animate="animate__fadeInUp" data-delay="200">
+                            <div class="menu-card">
+                                <div class="menu-img">
+                                    <img src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cold Brew">
+                                </div>
+                                <div class="menu-content">
+                                    <h4 class="menu-title">Cold Brew</h4>
+                                    <p>Smooth, slow-steeped cold coffee concentrate</p>
+                                    <span class="price">$4.75</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="food" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="menu-card">
+                                <div class="menu-img">
+                                    <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1494&q=80" alt="Avocado Toast">
+                                </div>
+                                <div class="menu-content">
+                                    <h4 class="menu-title">Avocado Toast</h4>
+                                    <p>Sourdough, smashed avocado, cherry tomatoes, feta</p>
+                                    <span class="price">$9.50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="menu-card">
+                                <div class="menu-img">
+                                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1398&q=80" alt="Breakfast Sandwich">
+                                </div>
+                                <div class="menu-content">
+                                    <h4 class="menu-title">Breakfast Sandwich</h4>
+                                    <p>Egg, cheddar, bacon/sausage on a brioche bun</p>
+                                    <span class="price">$8.75</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="menu-card">
+                                <div class="menu-img">
+                                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Quiche">
+                                </div>
+                                <div class="menu-content">
+                                    <h4 class="menu-title">Seasonal Quiche</h4>
+                                    <p>Flaky crust filled with eggs, cheese and seasonal veggies</p>
+                                    <span class="price">$7.50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="desserts" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="menu-card">
+                                <div class="menu-img">
+                                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1389&q=80" alt="Chocolate Cake">
+                                </div>
+                                <div class="menu-content">
+                                    <h4 class="menu-title">Chocolate Cake</h4>
+                                    <p>Rich, moist chocolate cake with ganache frosting</p>
+                                    <span class="price">$6.50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="menu-card">
+                                <div class="menu-img">
+                                    <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Croissant">
+                                </div>
+                                <div class="menu-content">
+                                    <h4 class="menu-title">Almond Croissant</h4>
+                                    <p>Buttery croissant filled with almond cream</p>
+                                    <span class="price">$4.25</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="menu-card">
+                                <div class="menu-img">
+                                    <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cinnamon Roll">
+                                </div>
+                                <div class="menu-content">
+                                    <h4 class="menu-title">Cinnamon Roll</h4>
+                                    <p>Freshly baked with cream cheese frosting</p>
+                                    <span class="price">$5.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title text-white">What Our Customers Say</h2>
+                <p class="lead text-white-50">Join our community of happy coffee lovers</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4 animate__animated" data-animate="animate__fadeInUp">
+                    <div class="testimonial-card">
+                        <div class="mb-3">
+                            <i class="fas fa-quote-left fa-2x" style="color: var(--accent);"></i>
+                        </div>
+                        <p class="testimonial-text">"The best latte I've ever had! The atmosphere is so cozy and the staff are incredibly friendly. My favorite spot to work remotely."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="rounded-circle me-3" width="50">
+                            <div>
+                                <h5 class="testimonial-author mb-0">Sarah J.</h5>
+                                <small>Regular Customer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4 animate__animated" data-animate="animate__fadeInUp" data-delay="100">
+                    <div class="testimonial-card">
+                        <div class="mb-3">
+                            <i class="fas fa-quote-left fa-2x" style="color: var(--accent);"></i>
+                        </div>
+                        <p class="testimonial-text">"I'm addicted to their cold brew - perfectly smooth and never bitter. The avocado toast is also to die for! Highly recommend."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T." class="rounded-circle me-3" width="50">
+                            <div>
+                                <h5 class="testimonial-author mb-0">Michael T.</h5>
+                                <small>Local Artist</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4 animate__animated" data-animate="animate__fadeInUp" data-delay="200">
+                    <div class="testimonial-card">
+                        <div class="mb-3">
+                            <i class="fas fa-quote-left fa-2x" style="color: var(--accent);"></i>
+                        </div>
+                        <p class="testimonial-text">"As a coffee connoisseur, I can confidently say Brew Haven serves some of the best espresso in the city. Their beans are always fresh."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily R." class="rounded-circle me-3" width="50">
+                            <div>
+                                <h5 class="testimonial-author mb-0">Emily R.</h5>
+                                <small>Coffee Blogger</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Visit Us</h2>
+                <p class="lead">We'd love to see you soon</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-5 mb-md-0 animate__animated" data-animate="animate__fadeInLeft">
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Location</h4>
+                        <p>123 Coffee Lane<br>Brewville,CA 90210</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-5 mb-md-0 animate__animated" data-animate="animate__fadeInUp">
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Hours</h4>
+                        <p>Monday - Friday: 7am - 7pm<br>
+                        Saturday - Sunday: 8am - 6pm</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 animate__animated" data-animate="animate__fadeInRight">
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h4>Contact</h4>
+                        <p>Phone: (555) 123-4567<br>
+                        Email: hello@brewhaven.com</p>
+                    </div>
+                </div>
+            </div>
+            
+       
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="text-white mb-4">Brew Haven</h3>
+                    <p>Artisan coffee and homemade delights in the heart of the community. Join us for exceptional coffee, delicious food, and warm hospitality.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-yelp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#menu">Menu</a>
+                        <a href="#testimonials">Testimonials</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h4 class="text-white mb-4">Menu</h4>
+                    <div class="footer-links">
+                        <a href="#">Coffee</a>
+                        <a href="#">Breakfast</a>
+                        <a href="#">Lunch</a>
+                        <a href="#">Pastries</a>
+                        <a href="#">Specialty Drinks</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Newsletter</h4>
+                    <p>Subscribe to get updates on special events and seasonal menu items.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 Brew Haven. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Made with <i class="fas fa-heart" style="color: #ff6b6b;"></i> by Brew Haven Team</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary btn-lg back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        // Navbar scroll effect
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('.navbar').addClass('scrolled');
+            } else {
+                $('.navbar').removeClass('scrolled');
+            }
+             
+            // Back to top button
+            if ($(this).scrollTop() > 300) {
+                $('.back-to-top').fadeIn('slow');
+            } else {
+                $('.back-to-top').fadeOut('slow');
+            }
+        });
+        
+        // Smooth scrolling for navigation
+        $('a[href*="#"]').on('click', function(e) {
+            e.preventDefault();
+            
+            $('html, body').animate(
+                {
+                    scrollTop: $($(this).attr('href')).offset().top - 70,
+                },
+                500,
+                'linear'
+            );
+        });
+        
+        // Back to top button
+        $('.back-to-top').click(function() {
+            $('html, body').animate({scrollTop: 0}, 500);
+            return false;
+        });
+        
+        // Animate elements on scroll
+        $(document).ready(function() {
+            // Create more floating coffee elements dynamically
+            for (let i = 0; i < 8; i++) {
+                const left = Math.random() * 90 + 5; // 5-95%
+                const top = Math.random() * 80 + 10; // 10-90%
+                const delay = Math.random() * 8;
+                const size = Math.random() * 30 + 30; // 30-60px
+                
+                const coffee = document.createElement('div');
+                coffee.className = 'floating-coffee';
+                coffee.style.left = `${left}%`;
+                coffee.style.top = `${top}%`;
+                coffee.style.width = `${size}px`;
+                coffee.style.height = `${size}px`;
+                coffee.style.animationDelay = `${delay}s`;
+                
+                document.querySelector('.hero-section').appendChild(coffee);
+            }
+            
+            // Create more falling coffee beans
+            for (let i = 0; i < 15; i++) {
+                const left = Math.random() * 90 + 5; // 5-95%
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 10; // 10-20s
+                const size = Math.random() * 20 + 15; // 15-35px
+                
+                const bean = document.createElement('div');
+                bean.className = 'coffee-bean';
+                bean.style.left = `${left}%`;
+                bean.style.width = `${size}px`;
+                bean.style.height = `${size}px`;
+                bean.style.animationDelay = `${delay}s`;
+                bean.style.animationDuration = `${duration}s`;
+                
+                document.querySelector('.hero-section').appendChild(bean);
+            }
+            
+            // Animate elements when they come into view
+            function animateOnScroll() {
+                $('[data-animate]').each(function() {
+                    const $this = $(this);
+                    const animateClass = $this.data('animate');
+                    const elementOffset = $this.offset().top;
+                    const windowHeight = $(window).height();
+                    const windowScroll = $(window).scrollTop();
+                    
+                    if (windowScroll > (elementOffset - windowHeight + 100) && !$this.hasClass('animate__animated')) {
+                        $this.addClass('animate__animated ' + animateClass);
+                        
+                        // Remove animation class after it completes to prevent repeating
+                        setTimeout(() => {
+                            $this.removeClass('animate__animated ' + animateClass);
+                        }, 1000);
+                    }
+                });
+            }
+            
+            // Run on load and scroll
+            animateOnScroll();
+            $(window).scroll(animateOnScroll);
+            
+            // Menu card hover effect
+            $('.menu-card').hover(
+                function() {
+                    $(this).find('.menu-img img').css('transform', 'scale(1.1)');
+                },
+                function() {
+                    $(this).find('.menu-img img').css('transform', 'scale(1)');
+                }
+            );
+            
+            // Pulse animation for CTA button
+            setInterval(function() {
+                $('.pulse').toggleClass('animate__pulse');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
