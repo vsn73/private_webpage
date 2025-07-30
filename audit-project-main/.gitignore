@@ -1,0 +1,5 @@
+/templates/.terraform/
+/templates/*.tfstate
+/templates/*.tfstate.*
+/templates/*.backup
+/templates/.terraform.lock.hcl
