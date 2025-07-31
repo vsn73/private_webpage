@@ -3,229 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brew Haven -Artisan Cafe</title>
-    <!-- Bootstrap CSS -->
+    <title>dox2U - Smart Document Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #6F4E37;
-            --secondary: #E6D5B8;
-            --accent: #C4A484;
-            --light: #F9F5F0;
-            --dark: #3E2723;
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            background-color: var(--light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
         }
         
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-        }
-        
         .navbar {
-            background-color: rgba(249, 245, 240, 0.9);
-            transition: all 0.3s ease;
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
         }
         
-        .navbar.scrolled {
-            background-color: rgba(111, 78, 55, 0.9) !important;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        .navbar-brand img {
+            height: 40px;
         }
         
-        .navbar.scrolled .nav-link {
-            color: var(--light) !important;
-        }
-        
-        .navbar.scrolled .navbar-brand {
-            color: var(--light) !important;
-        }
-        
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            color: white;
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            padding: 100px 0;
             position: relative;
             overflow: hidden;
         }
         
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(67,97,238,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+        
         .hero-content {
-            z-index: 2;
+            position: relative;
+            z-index: 1;
         }
         
         .hero-title {
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
         }
         
         .hero-subtitle {
             font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            color: #495057;
+            margin-bottom: 30px;
         }
         
         .btn-primary {
             background-color: var(--primary);
             border-color: var(--primary);
-            padding: 10px 25px;
+            padding: 12px 30px;
             font-weight: 600;
-            transition: all 0.3s;
+            border-radius: 8px;
         }
         
         .btn-primary:hover {
-            background-color: var(--dark);
-            border-color: var(--dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: var(--secondary);
+            border-color: var(--secondary);
         }
         
-        .section-title {
-            position: relative;
-            margin-bottom: 3rem;
+        .btn-outline-primary {
             color: var(--primary);
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-        
-        .about-section {
-            padding: 100px 0;
-            background-color: white;
-        }
-        
-        .menu-section {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-        
-        .menu-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-            margin-bottom: 30px;
-            height: 100%;
-        }
-        
-        .menu-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .menu-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .menu-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .menu-card:hover .menu-img img {
-            transform: scale(1.1);
-        }
-        
-        .menu-content {
-            padding: 20px;
-        }
-        
-        .menu-title {
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .price {
+            border-color: var(--primary);
+            padding: 12px 30px;
             font-weight: 600;
-            color: var(--primary);
-            font-size: 1.2rem;
+            border-radius: 8px;
         }
         
-        .testimonials-section {
-            padding: 100px 0;
-            background: linear-gradient(rgba(111, 78, 55, 0.9), rgba(111, 78, 55, 0.9)), url('https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80');
-            background-size: cover;
-            background-attachment: fixed;
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
             color: white;
         }
         
-        .testimonial-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border-radius: 10px;
+        .feature-card {
+            border: none;
+            border-radius: 12px;
             padding: 30px;
-            margin: 15px;
-            transition: all 0.3s;
+            height: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
-        .testimonial-card:hover {
+        .feature-card:hover {
             transform: translateY(-10px);
-            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
-        .testimonial-text {
-            font-style: italic;
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
             margin-bottom: 20px;
         }
         
-        .testimonial-author {
-            font-weight: 600;
-        }
-        
-        .contact-section {
-            padding: 100px 0;
-            background-color: white;
-        }
-        
-        .contact-info {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .contact-icon {
+        .section-title {
             font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: #6c757d;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+        }
+        
+        .team-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-img {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .footer {
             background-color: var(--dark);
             color: white;
-            padding: 50px 0 20px;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h5 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
         }
         
         .footer-links a {
-            color: var(--secondary);
+            color: #adb5bd;
             text-decoration: none;
             transition: color 0.3s;
-            display: block;
-            margin-bottom: 10px;
         }
         
         .footer-links a:hover {
@@ -233,134 +264,236 @@
         }
         
         .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
             color: white;
-            font-size: 1.5rem;
-            margin-right: 15px;
+            margin-right: 10px;
             transition: all 0.3s;
         }
         
         .social-icons a:hover {
-            color: var(--accent);
+            background-color: var(--primary);
             transform: translateY(-5px);
         }
         
-        .floating-coffee {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-image: url('https://cdn-icons-png.flaticon.com/512/924/924514.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.7;
-            animation: float 10s infinite linear;
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            color: #adb5bd;
         }
         
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-            }
+        .document-animation {
+            position: relative;
+            height: 400px;
         }
         
-        .coffee-bean {
+        .document {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            background-image: url('https://cdn-icons-png.flaticon.com/512/3132/3132693.png');
-            background-size: contain;
-            background-repeat: no-repeat;
+            width: 200px;
+            height: 280px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .document-header {
+            height: 40px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+        }
+        
+        .document-dots {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .document-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: white;
             opacity: 0.5;
-            animation: fall 15s linear infinite;
         }
         
-        @keyframes fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.5;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+        .document-body {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
         }
         
-        .pulse {
-            animation: pulse 2s infinite;
+        .document-line {
+            height: 8px;
+            background-color: #e9ecef;
+            margin-bottom: 10px;
+            border-radius: 4px;
         }
         
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
+        .document-line:nth-child(1) {
+            width: 80%;
         }
         
-        /* Parallax effect for hero section */
-        .parallax-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+        .document-line:nth-child(2) {
+            width: 60%;
+        }
+        
+        .document-line:nth-child(3) {
+            width: 70%;
+        }
+        
+        .document-line:nth-child(4) {
+            width: 50%;
+        }
+        
+        .document-line:nth-child(5) {
+            width: 90%;
+        }
+        
+        .document-line:nth-child(6) {
+            width: 30%;
+        }
+        
+        .document-footer {
+            height: 20px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            font-size: 10px;
+            color: #6c757d;
+        }
+        
+        .document-1 {
+            top: 20px;
+            left: 10%;
+            transform: rotate(-5deg);
+            z-index: 3;
+        }
+        
+        .document-2 {
+            top: 40px;
+            left: 30%;
+            transform: rotate(3deg);
+            z-index: 2;
+        }
+        
+        .document-3 {
+            top: 10px;
+            left: 50%;
+            transform: rotate(-2deg);
             z-index: 1;
         }
         
-        /* Mobile responsiveness */
+        .document-4 {
+            top: 60px;
+            left: 70%;
+            transform: rotate(5deg);
+            z-index: 2;
+        }
+        
+        .document-tag {
+            position: absolute;
+            background-color: var(--accent);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .tag-1 {
+            top: -10px;
+            right: -10px;
+            animation-delay: 0s;
+        }
+        
+        .tag-2 {
+            bottom: -10px;
+            left: -10px;
+            animation-delay: 0.5s;
+        }
+        
+        .tag-3 {
+            top: 50%;
+            right: -15px;
+            animation-delay: 1s;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
             
             .hero-subtitle {
                 font-size: 1.2rem;
             }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
         }
     </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand fs-3 fw-bold" href="#" style="color: var(--primary);">Brew Haven</a>
+            <a class="navbar-brand" href="#">
+                <img src="dox2u-logo-black-text.png" alt="dox2U Logo">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home" style="color: var(--primary);">Home</a>
+                        <a class="nav-link" href="#product">Product</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about" style="color: var(--primary);">About</a>
+                        <a class="nav-link" href="#features">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#menu" style="color: var(--primary);">Menu</a>
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#testimonials" style="color: var(--primary);">Testimonials</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact" style="color: var(--primary);">Contact</a>
+                        <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -368,83 +501,200 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="parallax-bg"></div>
-        <div class="container hero-content text-center animate__animated animate__fadeIn">
-            <h1 class="hero-title">Brew Haven</h1>
-            <p class="hero-subtitle">Artisan Coffee & Homemade Delights</p>
-            <a href="#menu" class="btn btn-primary btn-lg pulse">Explore Our Menu</a>
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title animate__animated animate__fadeInDown">The future of document management</h1>
+                    <p class="hero-subtitle animate__animated animate__fadeIn animate__delay-1s">Smart, secure, and surprisingly simple document platform that organizes around your business, not folders.</p>
+                    <div class="animate__animated animate__fadeIn animate__delay-2s">
+                        <a href="#contact" class="btn btn-primary me-3">Get Started</a>
+                        <a href="#product" class="btn btn-outline-primary">See How It Works</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="document-animation">
+                        <div class="document document-1 animate__animated animate__fadeInRight">
+                            <div class="document-header">
+                                <div class="document-dots">
+                                    <div class="document-dot"></div>
+                                    <div class="document-dot"></div>
+                                    <div class="document-dot"></div>
+                                </div>
+                            </div>
+                            <div class="document-body">
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                            </div>
+                            <div class="document-footer">
+                                Invoice #INV-2023-056
+                            </div>
+                            <div class="document-tag tag-1">Approved</div>
+                        </div>
+                        <div class="document document-2 animate__animated animate__fadeInRight animate__delay-1s">
+                            <div class="document-header">
+                                <div class="document-dots">
+                                    <div class="document-dot"></div>
+                                    <div class="document-dot"></div>
+                                    <div class="document-dot"></div>
+                                </div>
+                            </div>
+                            <div class="document-body">
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                            </div>
+                            <div class="document-footer">
+                                Contract 2023
+                            </div>
+                            <div class="document-tag tag-2">Signed</div>
+                        </div>
+                        <div class="document document-3 animate__animated animate__fadeInRight animate__delay-2s">
+                            <div class="document-header">
+                                <div class="document-dots">
+                                    <div class="document-dot"></div>
+                                    <div class="document-dot"></div>
+                                    <div class="document-dot"></div>
+                                </div>
+                            </div>
+                            <div class="document-body">
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                            </div>
+                            <div class="document-footer">
+                                BMR Report
+                            </div>
+                            <div class="document-tag tag-3">Pending</div>
+                        </div>
+                        <div class="document document-4 animate__animated animate__fadeInRight animate__delay-3s">
+                            <div class="document-header">
+                                <div class="document-dots">
+                                    <div class="document-dot"></div>
+                                    <div class="document-dot"></div>
+                                    <div class="document-dot"></div>
+                                </div>
+                            </div>
+                            <div class="document-body">
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                                <div class="document-line"></div>
+                            </div>
+                            <div class="document-footer">
+                                Audit 2022
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <!-- Floating coffee cup animations -->
-        <div class="floating-coffee" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
-        <div class="floating-coffee" style="top: 70%; left: 15%; animation-delay: 2s;"></div>
-        <div class="floating-coffee" style="top: 40%; left: 80%; animation-delay: 4s;"></div>
-        <div class="floating-coffee" style="top: 80%; left: 85%; animation-delay: 6s;"></div>
-        
-        <!-- Falling coffee beans -->
-        <div class="coffee-bean" style="left: 10%; animation-delay: 1s;"></div>
-        <div class="coffee-bean" style="left: 20%; animation-delay: 3s;"></div>
-        <div class="coffee-bean" style="left: 50%; animation-delay: 5s;"></div>
-        <div class="coffee-bean" style="left: 70%; animation-delay: 7s;"></div>
-        <div class="coffee-bean" style="left: 90%; animation-delay: 9s;"></div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="product" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate__animated animate__fadeIn">Built for workflows, not just storage</h2>
+                    <p class="section-subtitle animate__animated animate__fadeIn animate__delay-1s">dox2U helps you stay in control of your documents without slowing down your business.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card animate__animated animate__fadeInUp">
+                        <div class="feature-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3>Tag to Tally Vouchers</h3>
+                        <p>Easily connect documents to your accounting entries with our seamless Tally integration.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Audit Ready</h3>
+                        <p>Prepare for audits with confidence. All your documents organized and accessible in one place.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Team Collaboration</h3>
+                        <p>Manage BMRs, contracts, and other documents across teams without the chaos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about-section">
+    <section id="about" class="py-5">
         <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate__animated animate__fadeIn">Why We Built dox2U</h2>
+                    <p class="section-subtitle animate__animated animate__fadeIn animate__delay-1s">Born out of real frustration with document chaos</p>
+                </div>
+            </div>
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0 animate__animated" data-animate="animate__fadeInLeft">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cafe Interior" class="img-fluid rounded shadow">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="p-4 bg-light rounded-3 animate__animated animate__fadeInLeft">
+                        <p class="lead">"We've lived the chaos of scattered files, clunky tools, and broken workflows — and we decided to fix it."</p>
+                        <p>Over the past few years, we've built everything from full-scale ERPs to complex automation tools for real-world businesses — and in every case, one problem kept showing up: document management was broken.</p>
+                        <p>Folders within folders. Missing invoices. Files shared on WhatsApp, stored on desktops, and forgotten in inboxes. We saw it all — and we knew there had to be a better way.</p>
+                    </div>
                 </div>
-                <div class="col-lg-6 animate__animated" data-animate="animate__fadeInRight">
-                    <h2 class="section-title text-center">Our Story</h2>
-                    <p>Founded in 2010, Brew Haven began as a small coffee cart with a big dream - to bring exceptional coffee and warm hospitality to our community. Today, we're proud to be a beloved neighborhood cafe where every cup tells a story.</p>
-                    <p>We source our beans directly from sustainable farms around the world and roast them in-house to bring out their unique flavors. Our pastries and sandwiches are made fresh daily using locally-sourced ingredients.</p>
-                    <div class="row mt-4">
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <div class="me-3">
-                                    <i class="fas fa-coffee fa-2x" style="color: var(--primary);"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-0">Artisan Coffee</h5>
-                                    <p class="mb-0">Small-batch roasted</p>
-                                </div>
-                            </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Document Chaos" class="img-fluid rounded-3 shadow animate__animated animate__fadeInRight">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate__animated animate__fadeIn">The Team Behind It</h2>
+                    <p class="section-subtitle animate__animated animate__fadeIn animate__delay-1s">We're building a culture of clarity, speed, and care</p>
+                </div>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-6 col-lg-5">
+                    <div class="team-card animate__animated animate__fadeInUp">
+                       
+                        <div class="p-4">
+                            <h3>Sumeet Goel</h3>
+                            <p class="text-muted">Founder & CEO</p>
+                            <p>A technologist at heart with 20+ years of experience building scalable systems and customer-first platforms.</p>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <div class="me-3">
-                                    <i class="fas fa-bread-slice fa-2x" style="color: var(--primary);"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-0">Fresh Bakery</h5>
-                                    <p class="mb-0">Made daily</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <div class="me-3">
-                                    <i class="fas fa-leaf fa-2x" style="color: var(--primary);"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-0">Sustainable</h5>
-                                    <p class="mb-0">Eco-friendly practices</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="d-flex align-items-center">
-                                <div class="me-3">
-                                    <i class="fas fa-heart fa-2x" style="color: var(--primary);"></i>
-                                </div>
-                                <div>
-                                    <h5 class="mb-0">Community</h5>
-                                    <p class="mb-0">Local gathering place</p>
-                                </div>
-                            </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="team-card animate__animated animate__fadeInUp animate__delay-1s">
+                        
+                        <div class="p-4">
+                            <h3>Raaghav Goel</h3>
+                            <p class="text-muted">Co-founder & Principal PM</p>
+                            <p>Product strategist and computer scientist from UC Berkeley, previously at Microsoft and early-stage startups.</p>
                         </div>
                     </div>
                 </div>
@@ -452,443 +702,164 @@
         </div>
     </section>
 
-    <!-- Menu Section -->
-    <section id="menu" class="menu-section">
+    <!-- Roadmap Section -->
+    <section class="py-5">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Our Menu</h2>
-                <p class="lead">Seasonal selections crafted with care</p>
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate__animated animate__fadeIn">Where We're Going</h2>
+                    <p class="section-subtitle animate__animated animate__fadeIn animate__delay-1s">We're just getting started</p>
+                </div>
             </div>
-            
-            <ul class="nav nav-tabs justify-content-center mb-4" id="menuTabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="coffee-tab" data-bs-toggle="tab" data-bs-target="#coffee" type="button" role="tab">Coffee</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="food-tab" data-bs-toggle="tab" data-bs-target="#food" type="button" role="tab">Food</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="desserts-tab" data-bs-toggle="tab" data-bs-target="#desserts" type="button" role="tab">Desserts</button>
-                </li>
-            </ul>
-            
-            <div class="tab-content" id="menuTabsContent">
-                <div class="tab-pane fade show active" id="coffee" role="tabpanel">
-                    <div class="row">
-                        <div class="col-md-4 animate__animated" data-animate="animate__fadeInUp">
-                            <div class="menu-card">
-                                <div class="menu-img">
-                                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Espresso">
-                                </div>
-                                <div class="menu-content">
-                                    <h4 class="menu-title">Espresso</h4>
-                                    <p>Our signature rich and creamy espresso shot</p>
-                                    <span class="price">$3.50</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 animate__animated" data-animate="animate__fadeInUp" data-delay="100">
-                            <div class="menu-card">
-                                <div class="menu-img">
-                                    <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cappuccino">
-                                </div>
-                                <div class="menu-content">
-                                    <h4 class="menu-title">Cappuccino</h4>
-                                    <p>Perfectly balanced espresso, steamed milk and foam</p>
-                                    <span class="price">$4.50</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 animate__animated" data-animate="animate__fadeInUp" data-delay="200">
-                            <div class="menu-card">
-                                <div class="menu-img">
-                                    <img src="https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cold Brew">
-                                </div>
-                                <div class="menu-content">
-                                    <h4 class="menu-title">Cold Brew</h4>
-                                    <p>Smooth, slow-steeped cold coffee concentrate</p>
-                                    <span class="price">$4.75</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="timeline">
+                <div class="timeline-item left animate__animated animate__fadeIn">
+                    <div class="timeline-content">
+                        <h3>Smarter AI-led automation</h3>
+                        <p>Intelligent document processing and automated workflows to reduce manual effort.</p>
                     </div>
                 </div>
-                
-                <div class="tab-pane fade" id="food" role="tabpanel">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="menu-card">
-                                <div class="menu-img">
-                                    <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1494&q=80" alt="Avocado Toast">
-                                </div>
-                                <div class="menu-content">
-                                    <h4 class="menu-title">Avocado Toast</h4>
-                                    <p>Sourdough, smashed avocado, cherry tomatoes, feta</p>
-                                    <span class="price">$9.50</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="menu-card">
-                                <div class="menu-img">
-                                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1398&q=80" alt="Breakfast Sandwich">
-                                </div>
-                                <div class="menu-content">
-                                    <h4 class="menu-title">Breakfast Sandwich</h4>
-                                    <p>Egg, cheddar, bacon/sausage on a brioche bun</p>
-                                    <span class="price">$8.75</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="menu-card">
-                                <div class="menu-img">
-                                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Quiche">
-                                </div>
-                                <div class="menu-content">
-                                    <h4 class="menu-title">Seasonal Quiche</h4>
-                                    <p>Flaky crust filled with eggs, cheese and seasonal veggies</p>
-                                    <span class="price">$7.50</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="timeline-item right animate__animated animate__fadeIn">
+                    <div class="timeline-content">
+                        <h3>Deeper integrations</h3>
+                        <p>Seamless connections with accounting and ERP systems.</p>
                     </div>
                 </div>
-                
-                <div class="tab-pane fade" id="desserts" role="tabpanel">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="menu-card">
-                                <div class="menu-img">
-                                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1389&q=80" alt="Chocolate Cake">
-                                </div>
-                                <div class="menu-content">
-                                    <h4 class="menu-title">Chocolate Cake</h4>
-                                    <p>Rich, moist chocolate cake with ganache frosting</p>
-                                    <span class="price">$6.50</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="menu-card">
-                                <div class="menu-img">
-                                    <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Croissant">
-                                </div>
-                                <div class="menu-content">
-                                    <h4 class="menu-title">Almond Croissant</h4>
-                                    <p>Buttery croissant filled with almond cream</p>
-                                    <span class="price">$4.25</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="menu-card">
-                                <div class="menu-img">
-                                    <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cinnamon Roll">
-                                </div>
-                                <div class="menu-content">
-                                    <h4 class="menu-title">Cinnamon Roll</h4>
-                                    <p>Freshly baked with cream cheese frosting</p>
-                                    <span class="price">$5.00</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="timeline-item left animate__animated animate__fadeIn">
+                    <div class="timeline-content">
+                        <h3>White-labeled platform</h3>
+                        <p>Custom solutions for SaaS and solution providers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right animate__animated animate__fadeIn">
+                    <div class="timeline-content">
+                        <h3>More clarity, less chaos</h3>
+                        <p>Continued focus on helping businesses that refuse to settle for chaos.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials-section">
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title text-white">What Our Customers Say</h2>
-                <p class="lead text-white-50">Join our community of happy coffee lovers</p>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-4 mb-4 animate__animated" data-animate="animate__fadeInUp">
-                    <div class="testimonial-card">
-                        <div class="mb-3">
-                            <i class="fas fa-quote-left fa-2x" style="color: var(--accent);"></i>
-                        </div>
-                        <p class="testimonial-text">"The best latte I've ever had! The atmosphere is so cozy and the staff are incredibly friendly. My favorite spot to work remotely."</p>
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="rounded-circle me-3" width="50">
-                            <div>
-                                <h5 class="testimonial-author mb-0">Sarah J.</h5>
-                                <small>Regular Customer</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4 animate__animated" data-animate="animate__fadeInUp" data-delay="100">
-                    <div class="testimonial-card">
-                        <div class="mb-3">
-                            <i class="fas fa-quote-left fa-2x" style="color: var(--accent);"></i>
-                        </div>
-                        <p class="testimonial-text">"I'm addicted to their cold brew - perfectly smooth and never bitter. The avocado toast is also to die for! Highly recommend."</p>
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T." class="rounded-circle me-3" width="50">
-                            <div>
-                                <h5 class="testimonial-author mb-0">Michael T.</h5>
-                                <small>Local Artist</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4 animate__animated" data-animate="animate__fadeInUp" data-delay="200">
-                    <div class="testimonial-card">
-                        <div class="mb-3">
-                            <i class="fas fa-quote-left fa-2x" style="color: var(--accent);"></i>
-                        </div>
-                        <p class="testimonial-text">"As a coffee connoisseur, I can confidently say Brew Haven serves some of the best espresso in the city. Their beans are always fresh."</p>
-                        <div class="d-flex align-items-center">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily R." class="rounded-circle me-3" width="50">
-                            <div>
-                                <h5 class="testimonial-author mb-0">Emily R.</h5>
-                                <small>Coffee Blogger</small>
-                            </div>
-                        </div>
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h2 class="mb-4 animate__animated animate__fadeIn">Ready to simplify your document workflows?</h2>
+                    <p class="lead mb-5 animate__animated animate__fadeIn animate__delay-1s">Join thousands of businesses that have already discovered the dox2U difference.</p>
+                    <div class="animate__animated animate__fadeIn animate__delay-2s">
+                        <a href="#contact" class="btn btn-light btn-lg me-3">Get Started</a>
+                        <a href="#product" class="btn btn-outline-light btn-lg">Learn More</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Visit Us</h2>
-                <p class="lead">We'd love to see you soon</p>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-4 mb-5 mb-md-0 animate__animated" data-animate="animate__fadeInLeft">
-                    <div class="contact-info">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h4>Location</h4>
-                        <p>123 Coffee Lane<br>Brewville,CA 90210</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-5 mb-md-0 animate__animated" data-animate="animate__fadeInUp">
-                    <div class="contact-info">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <h4>Hours</h4>
-                        <p>Monday - Friday: 7am - 7pm<br>
-                        Saturday - Sunday: 8am - 6pm</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 animate__animated" data-animate="animate__fadeInRight">
-                    <div class="contact-info">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <h4>Contact</h4>
-                        <p>Phone: (555) 123-4567<br>
-                        Email: hello@brewhaven.com</p>
-                    </div>
-                </div>
-            </div>
-            
-       
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer id="contact" class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h3 class="text-white mb-4">Brew Haven</h3>
-                    <p>Artisan coffee and homemade delights in the heart of the community. Join us for exceptional coffee, delicious food, and warm hospitality.</p>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="dox2u-logo-black-text.png" alt="dox2U Logo" class="footer-logo">
+                    <p>Simplify your document workflows with dox2U—secure, intuitive, and built for growing teams.</p>
                     <div class="social-icons mt-4">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-yelp"></i></a>
+                        <a href="https://www.linkedin.com/company/dox-2u/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://x.com/Dox2U"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/dox2u/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/dox2u/"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h4 class="text-white mb-4">Quick Links</h4>
+                <div class="col-lg-2 col-md-4">
                     <div class="footer-links">
-                        <a href="#home">Home</a>
-                        <a href="#about">About</a>
-                        <a href="#menu">Menu</a>
-                        <a href="#testimonials">Testimonials</a>
-                        <a href="#contact">Contact</a>
+                        <h5>Product</h5>
+                        <ul>
+                            <li><a href="#">Tally Plugin</a></li>
+                            <li><a href="#">Document Management</a></li>
+                            <li><a href="#">Platform</a></li>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">Security</a></li>
+                            <li><a href="#">Pricing</a></li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h4 class="text-white mb-4">Menu</h4>
+                <div class="col-lg-2 col-md-4">
                     <div class="footer-links">
-                        <a href="#">Coffee</a>
-                        <a href="#">Breakfast</a>
-                        <a href="#">Lunch</a>
-                        <a href="#">Pastries</a>
-                        <a href="#">Specialty Drinks</a>
+                        <h5>Resources</h5>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Disclaimer</a></li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Newsletter</h4>
-                    <p>Subscribe to get updates on special events and seasonal menu items.</p>
-                    <form class="mt-3">
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Your Email">
-                            <button class="btn btn-primary" type="button">Subscribe</button>
-                        </div>
-                    </form>
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Partners</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h5>Contact</h5>
+                        <ul>
+                            <li>Privet Ventures Pvt Ltd</li>
+                            <li>Unit 05, 18th Floor</li>
+                            <li>Emaar Digital Greens, Tower-B</li>
+                            <li>Sector 61, Gurugram</li>
+                            <li>Haryana, India – 122102</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
-            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
-            
             <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2023 Brew Haven. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Made with <i class="fas fa-heart" style="color: #ff6b6b;"></i> by Brew Haven Team</p>
+                <div class="col-12 text-center copyright">
+                    <p>&copy; 2023 dox2U. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="btn btn-primary btn-lg back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99;">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
     <script>
-        // Navbar scroll effect
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 100) {
-                $('.navbar').addClass('scrolled');
-            } else {
-                $('.navbar').removeClass('scrolled');
-            }
-             
-            // Back to top button
-            if ($(this).scrollTop() > 300) {
-                $('.back-to-top').fadeIn('slow');
-            } else {
-                $('.back-to-top').fadeOut('slow');
-            }
-        });
-        
-        // Smooth scrolling for navigation
-        $('a[href*="#"]').on('click', function(e) {
-            e.preventDefault();
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate__animated');
             
-            $('html, body').animate(
-                {
-                    scrollTop: $($(this).attr('href')).offset().top - 70,
-                },
-                500,
-                'linear'
-            );
-        });
-        
-        // Back to top button
-        $('.back-to-top').click(function() {
-            $('html, body').animate({scrollTop: 0}, 500);
-            return false;
-        });
-        
-        // Animate elements on scroll
-        $(document).ready(function() {
-            // Create more floating coffee elements dynamically
-            for (let i = 0; i < 8; i++) {
-                const left = Math.random() * 90 + 5; // 5-95%
-                const top = Math.random() * 80 + 10; // 10-90%
-                const delay = Math.random() * 8;
-                const size = Math.random() * 30 + 30; // 30-60px
-                
-                const coffee = document.createElement('div');
-                coffee.className = 'floating-coffee';
-                coffee.style.left = `${left}%`;
-                coffee.style.top = `${top}%`;
-                coffee.style.width = `${size}px`;
-                coffee.style.height = `${size}px`;
-                coffee.style.animationDelay = `${delay}s`;
-                
-                document.querySelector('.hero-section').appendChild(coffee);
-            }
-            
-            // Create more falling coffee beans
-            for (let i = 0; i < 15; i++) {
-                const left = Math.random() * 90 + 5; // 5-95%
-                const delay = Math.random() * 15;
-                const duration = Math.random() * 10 + 10; // 10-20s
-                const size = Math.random() * 20 + 15; // 15-35px
-                
-                const bean = document.createElement('div');
-                bean.className = 'coffee-bean';
-                bean.style.left = `${left}%`;
-                bean.style.width = `${size}px`;
-                bean.style.height = `${size}px`;
-                bean.style.animationDelay = `${delay}s`;
-                bean.style.animationDuration = `${duration}s`;
-                
-                document.querySelector('.hero-section').appendChild(bean);
-            }
-            
-            // Animate elements when they come into view
-            function animateOnScroll() {
-                $('[data-animate]').each(function() {
-                    const $this = $(this);
-                    const animateClass = $this.data('animate');
-                    const elementOffset = $this.offset().top;
-                    const windowHeight = $(window).height();
-                    const windowScroll = $(window).scrollTop();
-                    
-                    if (windowScroll > (elementOffset - windowHeight + 100) && !$this.hasClass('animate__animated')) {
-                        $this.addClass('animate__animated ' + animateClass);
-                        
-                        // Remove animation class after it completes to prevent repeating
-                        setTimeout(() => {
-                            $this.removeClass('animate__animated ' + animateClass);
-                        }, 1000);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const animation = entry.target.getAttribute('data-animation');
+                        entry.target.classList.add('animate__fadeIn');
+                        observer.unobserve(entry.target);
                     }
                 });
-            }
+            }, {
+                threshold: 0.1
+            });
             
-            // Run on load and scroll
-            animateOnScroll();
-            $(window).scroll(animateOnScroll);
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
             
-            // Menu card hover effect
-            $('.menu-card').hover(
-                function() {
-                    $(this).find('.menu-img img').css('transform', 'scale(1.1)');
-                },
-                function() {
-                    $(this).find('.menu-img img').css('transform', 'scale(1)');
-                }
-            );
-            
-            // Pulse animation for CTA button
-            setInterval(function() {
-                $('.pulse').toggleClass('animate__pulse');
-            }, 2000);
+            // Document animation hover effect
+            const documents = document.querySelectorAll('.document');
+            documents.forEach(doc => {
+                doc.addEventListener('mouseenter', function() {
+                    this.style.transform = this.style.transform + ' scale(1.05)';
+                });
+                
+                doc.addEventListener('mouseleave', function() {
+                    this.style.transform = this.style.transform.replace(' scale(1.05)', '');
+                });
+            });
         });
     </script>
 </body>
